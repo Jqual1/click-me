@@ -61,6 +61,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  // This resets the value of the counter to 0
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -105,11 +112,25 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(left:30),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              onPressed: _resetCounter,
+              tooltip: 'Reset',
+              child: const Icon(Icons.remove),
+            ), // This trailing comma makes auto-formatting nicer for build methods.
+            Expanded(child: Container()),
+            FloatingActionButton(
+              onPressed: _incrementCounter,
+              tooltip: 'Increment',
+              child: const Icon(Icons.add),
+            ),
+          ],
+        )
+      )
     );
   }
 }
