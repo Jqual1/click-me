@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -48,6 +50,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final _random = new Random();
   int _counter = 0;
 
   void _incrementCounter() {
@@ -65,6 +68,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void _resetCounter() {
     setState(() {
       _counter = 0;
+    });
+  }
+  void _randomInRange() {
+    setState(() {
+      _counter = _random.nextInt(_counter);
     });
   }
 
@@ -120,13 +128,18 @@ class _MyHomePageState extends State<MyHomePage> {
             FloatingActionButton(
               onPressed: _resetCounter,
               tooltip: 'Reset',
-              child: const Icon(Icons.remove),
+              child: const Icon(Icons.delete),
             ), // This trailing comma makes auto-formatting nicer for build methods.
             Expanded(child: Container()),
             FloatingActionButton(
               onPressed: _incrementCounter,
               tooltip: 'Increment',
               child: const Icon(Icons.add),
+            ),
+            FloatingActionButton(
+              onPressed: _randomInRange,
+              tooltip: 'Roll',
+              child: const Icon(Icons.refresh),
             ),
           ],
         )
