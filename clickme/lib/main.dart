@@ -52,6 +52,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final _random = new Random();
   int _counter = 0;
+  int _rolled = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -70,9 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter = 0;
     });
   }
+  // This randomizes the counter to a 
   void _randomInRange() {
     setState(() {
-      _counter = _random.nextInt(_counter);
+      _rolled = _random.nextInt(_counter);
     });
   }
 
@@ -111,10 +113,17 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Current Number:',
             ),
             Text(
               '$_counter',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            const Text(
+              'Rolled Number:',
+            ),
+            Text(
+              '$_rolled',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
